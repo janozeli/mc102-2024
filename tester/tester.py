@@ -49,20 +49,24 @@ while (os.path.exists(testfile)):
     outfile = path + "/tests/arq" + "{:02d}".format(i) + ".res"
     difffile = path + "/tests/arq" + "{:02d}".format(i) + ".diff"
 
-    os.system("python3 " + labfile + " < " + testfile + " > " + outfile)
-    if os.system("diff " + outfile + " " + resfile + " > " + difffile) == 0:
-        print("Teste ", "{:02d}".format(i), ": resultado correto")
-    else:
-        print("Teste ", "{:02d}".format(i), ": resultado incorreto")
-        if output:
-            # os.system("cat " + difffile)
-            print(">>> Sua resposta:")
-            os.system("cat " + outfile)
-            print(">>> Resposta correta:")
-            os.system("cat " + resfile)
-            break
+    try:
+        os.system("python3 " + labfile + " < " + testfile + " > " + outfile)
+        if os.system("diff " + outfile + " " + resfile + " > " + difffile) == 0:
+            print("Teste ", "{:02d}".format(i), ": resultado correto")
+        else:
+            print("Teste ", "{:02d}".format(i), ": resultado incorreto")
+            if output:
+                # os.system("cat " + difffile)
+                print(">>> Sua resposta:")
+                os.system("cat " + outfile)
+                print(">>> Resposta correta:")
+                os.system("cat " + resfile)
+                break
+    finally:
+        if os.path.exists(outfile):
+            os.remove(outfile)
+        if os.path.exists(difffile):    
+            os.remove(difffile)
 
-    os.remove(outfile)
-    os.remove(difffile)
     i += 1
     testfile = path + "/tests/arq" + "{:02d}".format(i) + ".in"
