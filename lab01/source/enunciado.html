@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 01</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h1><a id="user-content-aritmética-com-inteiros" class="anchor" aria-hidden="true" tabindex="-1" href="#aritmética-com-inteiros"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aritmética com Inteiros</h1>
+<p>O objetivo deste laboratório é exercitar o processo de submissão de um código em Python no sistema <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a>. Seu programa irá receber dois números inteiros e irá armazená-los nas variáveis <em>a</em> e <em>b</em>. Como saída, seu programa deve exibir inicialmente os valores das variáveis <em>a</em> e <em>b</em>. Em seguida, seu programa deve efetuar uma sequência de operações aritméticas utilizando as variáveis <em>a</em> e <em>b</em>, e exibir o resultado na seguinte ordem:</p>
+<ul>
+<li>Soma: <code>a + b</code>
+</li>
+<li>Subtração: <code>a - b</code>
+</li>
+<li>Multiplicação: <code>a * b</code>
+</li>
+<li>Exponenciação: <code>a ** b</code>
+</li>
+<li>Divisão Inteira: <code>a // b</code>
+</li>
+<li>Resto da Divisão: <code>a % b</code>
+</li>
+</ul>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<h3><a id="user-content-teste-01" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-01"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq01.in">Entrada</a></p>
+<pre><code>1
+9
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq01.out">Saída</a></p>
+<pre><code>a = 1
+b = 9
+a + b = 10
+a - b = -8
+a * b = 9
+a ** b = 1
+a // b = 0
+a % b = 1
+</code></pre>
+<h3><a id="user-content-teste-02" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-02"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq02.in">Entrada</a></p>
+<pre><code>2
+8
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq02.out">Saída</a></p>
+<pre><code>a = 2
+b = 8
+a + b = 10
+a - b = -6
+a * b = 16
+a ** b = 256
+a // b = 0
+a % b = 2
+</code></pre>
+<h3><a id="user-content-teste-03" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-03"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq03.in">Entrada</a></p>
+<pre><code>7
+3
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/01/dados/arq03.out">Saída</a></p>
+<pre><code>a = 7
+b = 3
+a + b = 10
+a - b = 4
+a * b = 21
+a ** b = 343
+a // b = 2
+a % b = 1
+</code></pre>
+<h2><a id="user-content-código-base" class="anchor" aria-hidden="true" tabindex="-1" href="#código-base"><span aria-hidden="true" class="octicon octicon-link"></span></a>Código Base</h2>
+<p>No arquivo auxiliar lab01.py você irá encontrar um código base para 
+dar início ao processo de submissão deste laboratório. Você deve 
+realizar a primeira submissão no <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a>
+ utilizando esse código base e irá perceber que em todos os casos de 
+testes as soluções serão consideradas incorretas. No arquivo auxiliar 
+lab01.py existem <em>três</em> erros que devem ser corrigidos para que a
+ submissão seja considerada correta em todos os casos de teste. A seguir
+ iremos mostrar como corrigir esses erros presentes no código base. Para
+ cada um dos erros você deve realizar uma nova submissão no <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a> para verificar se o erro foi corrigido ou não.</p>
+<h2><a id="user-content-corrigindo-o-código-base" class="anchor" aria-hidden="true" tabindex="-1" href="#corrigindo-o-código-base"><span aria-hidden="true" class="octicon octicon-link"></span></a>Corrigindo o Código Base</h2>
+<h3><a id="user-content-1-espaçamento-extra" class="anchor" aria-hidden="true" tabindex="-1" href="#1-espaçamento-extra"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Espaçamento Extra</h3>
+<p>Na linha 12 do código base você irá encontrar o seguinte comando:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"b  ="</span>, <span class="pl-s1">b</span>)</pre></div>
+<p>Perceba que antes da igualdade existem dois espaços, mas no exemplo 
+de saída esperada pelo seu programa existe apenas um. Para cada um dos 
+testes o <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a> compara se a saída do seu programa é <em>exatamente</em>
+ igual a saída esperada do teste, isso significa que espaços extras 
+podem fazer com que seu programa forneça soluções incorretas mesmo que 
+visualmente elas pareçam idênticas. Para solucionar esse problema 
+modifique a linha 12 para o seguinte comando:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"b ="</span>, <span class="pl-s1">b</span>)</pre></div>
+<p>Realize a submissão novamente no <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a> e verifique se o problema de espaço extra foi corrigido.</p>
+<h3><a id="user-content-2-ordem-dos-operandos" class="anchor" aria-hidden="true" tabindex="-1" href="#2-ordem-dos-operandos"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Ordem dos Operandos</h3>
+<p>Na linha 14 do código base você irá encontrar o seguinte comando:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"a - b ="</span>, <span class="pl-s1">b</span> <span class="pl-c1">-</span> <span class="pl-s1">a</span>)</pre></div>
+<p>Note que nesse comando é esperado que o resultado da operação <code>a - b</code> seja exibido, mas o comando está exibindo o resultado da operação <code>b - a</code>
+ e isso torna as saídas fornecidas pelo seu programa incorretas. Para 
+solucionar esse problema modifique a linha 14 para o seguinte comando:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"a - b ="</span>, <span class="pl-s1">a</span> <span class="pl-c1">-</span> <span class="pl-s1">b</span>)</pre></div>
+<p>Realize a submissão novamente no <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a> e verifique se o problema foi corrigido.</p>
+<h3><a id="user-content-3-ordem-das-impressões" class="anchor" aria-hidden="true" tabindex="-1" href="#3-ordem-das-impressões"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Ordem das Impressões</h3>
+<p>Nas linhas 17 e 18 do código base você irá encontrar os seguintes comandos:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"a % b ="</span>, <span class="pl-s1">a</span> <span class="pl-c1">%</span> <span class="pl-s1">b</span>)
+<span class="pl-en">print</span>(<span class="pl-s">"a // b ="</span>, <span class="pl-s1">a</span> <span class="pl-c1">//</span> <span class="pl-s1">b</span>)</pre></div>
+<p>Note que programa será executado linha por linha, isso significa que o
+ código base está exibindo primeiro o resultado da operação <code>a % b</code> (resto da divisão inteira) antes do resultado da operação <code>a // b</code> (divisão inteira). Como mencionado anteriormente, o <a href="https://susy.ic.unicamp.br:9999/mc102" rel="nofollow">SuSy</a> compara se a saída do seu programa é <em>exatamente</em>
+ igual a saída esperada para cada um dos testes e como a exibição dos 
+resultados das operações aritméticas está invertida, os testes serão 
+considerados como incorretos. Para solucionar esse problema, inverta a 
+ordem das linhas 17 e 18, desta forma:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-en">print</span>(<span class="pl-s">"a // b ="</span>, <span class="pl-s1">a</span> <span class="pl-c1">//</span> <span class="pl-s1">b</span>)
+<span class="pl-en">print</span>(<span class="pl-s">"a % b ="</span>, <span class="pl-s1">a</span> <span class="pl-c1">%</span> <span class="pl-s1">b</span>)</pre></div>
+<p>Realize a submissão novamente no <a href="https://susy.ic.unicamp.br:9999/mc102/01">SuSy</a> e verifique se para todos os testes as soluções constam como corretas.</p>
+<h2><a id="user-content-orientações" class="anchor" aria-hidden="true" tabindex="-1" href="#orientações"><span aria-hidden="true" class="octicon octicon-link"></span></a>Orientações</h2>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/01">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab01.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux01.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões.</li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 1.</li>
+<li>O prazo final para submissão é dia 31/03/2024 (domingo).</li>
+</ul>
+
+    </article>
+
+
+<protonpass-root-677d data-protonpass-role="root"></protonpass-root-677d></body></html>

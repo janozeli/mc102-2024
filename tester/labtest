@@ -1,0 +1,15 @@
+#!/bin/bash
+
+clear
+path="$(pwd)"/"$1"
+
+lab_number=$(basename "$path" | sed -n 's/lab\([0-9]\+\).*/\1/p')
+
+if [ -z "$lab_number" ]; then
+    path="."
+    current_dir=$(pwd)
+    lab_number=$(basename "$current_dir" | sed -n 's/lab\([0-9]\+\).*/\1/p')
+fi
+
+echo "Iniciando testes lab$lab_number"
+python3 /home/janozeli/projetos/mc102-2024/tester/tester.py "$path"
