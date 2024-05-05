@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 02</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h1>Em Busca de um Chuveiro</h1>
+<p>Chegou a hora de você comprar um chuveiro novo, mas você está 
+preocupado com o impacto que ele pode ter na sua conta de energia 
+elétrica. Felizmente, você está aprendendo a programar em Python e pode 
+escrever um programa para verificar se um dado chuveiro é uma boa 
+escolha.</p>
+<p>Em relação ao chuveiro, você tem duas informações: o valor <code>R</code> da resistência e a voltagem <code>V</code>
+ de operação. Note que a loja que você escolheu tem um padrão não 
+convencional para descrever o chuveiro, informando a resistência no 
+lugar da potência, então você pode calcular a potência utilizada pelo 
+chuveiro pela seguinte formula.</p>
+<p><img alt="Formula da potencia P igual a V ao quadrado dividido por R" src="enunciado_arquivos/pot.jpg"></p>
+<p>Além das informações sobre o chuveiro você também tem uma estimativa do valor <code>T</code> correspondente a quantas horas o chuveiro ficara ligado em uma semana e o custo <code>C</code>
+ em reais do kWh na sua conta de energia. Lembrando que o consumo em kWh
+ pode ser calculado ao multiplicarmos a potência do aparelho pelo tempo 
+de uso em horas e dividirmos por 1000. Com esses dados, você deseja 
+escrever um programa que determine se o consumo do seu chuveiro é menor 
+ao igual a um valor limite <code>L</code>.</p>
+<p>Como entrada, seu programa receberá 5 linhas com os valores correspondentes a <code>R</code>, <code>V</code>, <code>T</code>, <code>C</code> e <code>L</code>, onde <code>C</code> é um valor real e os demais são valores inteiros. Como saída, seu programa devera imprimir um valor booleano <code>True</code>,
+ caso o valor que você espera pagar na sua conta de energia por causa do
+ chuveiro em uma semana seja menor ou igual ao seu limite <code>L</code> ou <code>False</code>, caso contrario.</p>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<h3>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq01.in">Entrada</a></p>
+<pre><code>2
+127
+10
+0.15
+10
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq01.out">Saída</a></p>
+<pre><code>False
+</code></pre>
+<h3>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq02.in">Entrada</a></p>
+<pre><code>8
+220
+14
+0.34
+30
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq02.out">Saída</a></p>
+<pre><code>True
+</code></pre>
+<h3>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq03.in">Entrada</a></p>
+<pre><code>3
+127
+11
+0.81
+50
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/02/dados/arq03.out">Saída</a></p>
+<pre><code>True
+</code></pre>
+<h2>Código Base</h2>
+<p>No arquivo auxiliar lab02.py você irá encontrar um código base para dar início ao processo de elaboração desse programa.</p>
+<h2>Orientações</h2>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/02">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab02.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux02.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões. </li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 1.</li>
+<li>O prazo final para submissão é dia 07/04/2024 (domingo).</li>
+</ul>
+    </article>
+
+
+<protonpass-root-6c77 data-protonpass-role="root"></protonpass-root-6c77></body></html>
