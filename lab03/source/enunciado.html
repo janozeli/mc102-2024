@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 03</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<div class="markdown-heading"><h1 class="heading-element">Cupons de Desconto</h1><a id="user-content-cupons-de-desconto" class="anchor" aria-label="Permalink: Cupons de Desconto" href="#cupons-de-desconto"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Seu amigo João ganhou três cupons de desconto em uma loja virtual e 
+pretende fazer uma compra. Cada cupom possui regras distintas e apenas 
+um cupom pode ser usado em uma compra. Então, você ajudou o seu amigo a 
+calcular os descontos e usar o melhor cupom possível. No entanto, no mês
+ seguinte João precisou novamente da sua ajuda, pois os valores da 
+compra e dos cupons mudaram, apesar de possuirem o mesmo padrão de 
+descontos. Dessa forma, você decidiu criar um programa para automatizar o
+ cálculo do melhor cupom de desconto.</p>
+<p>Os três cupons seguem o padrão abaixo:</p>
+<ul>
+<li>Cupom 1: R$ <code>X1</code> de desconto para compras de R$ <code>Z1</code> reais ou maiores;</li>
+<li>Cupom 2: <code>X2</code>% de desconto, limitado a R$ <code>Z2</code> reais;</li>
+<li>Cupom 3: <code>X3</code>% de desconto para compras de R$ <code>Z3</code> reais ou maiores.</li>
+</ul>
+<p>Note que dependendo do valor da compra, os cupons 1 e 3 não podem ser usados.</p>
+<p>Como entrada, você receberá os valores de <code>X1, Z1, X2, Z2, X3,</code> e <code>Z3</code>, com cada valor em uma linha. Por último, você receberá o valor da compra que será realizada.</p>
+<p>Como saída, você deve imprimir qual cupom tem o maior valor de desconto e o valor do desconto, seguindo o padrão abaixo.</p>
+<pre><code>Maior desconto: Cupom 1
+Valor do desconto: R$ 50,00
+</code></pre>
+<p>Em caso de empates, imprima em ordem crescente todos os cupons com maior valor de desconto, seguindo o padrão abaixo.</p>
+<pre><code>Maior desconto: Cupons 1, 2
+Valor do desconto: R$ 100,00
+</code></pre>
+<pre><code>Maior desconto: Cupons 1, 2, 3
+Valor do desconto: R$ 150,00
+</code></pre>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<div class="markdown-heading"><h3 class="heading-element">Teste 01</h3><a id="user-content-teste-01" class="anchor" aria-label="Permalink: Teste 01" href="#teste-01"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq01.in">Entrada</a></p>
+<pre><code>400
+2500
+10
+1500
+10
+4000
+4000
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq01.out">Saída</a></p>
+<pre><code>Maior desconto: Cupons 1, 2, 3
+Valor do desconto: R$ 400,00
+</code></pre>
+<div class="markdown-heading"><h3 class="heading-element">Teste 02</h3><a id="user-content-teste-02" class="anchor" aria-label="Permalink: Teste 02" href="#teste-02"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq02.in">Entrada</a></p>
+<pre><code>346
+2400
+28
+493
+12
+3500
+2100
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq02.out">Saída</a></p>
+<pre><code>Maior desconto: Cupom 2
+Valor do desconto: R$ 493,00
+</code></pre>
+<div class="markdown-heading"><h3 class="heading-element">Teste 04</h3><a id="user-content-teste-04" class="anchor" aria-label="Permalink: Teste 04" href="#teste-04"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq04.in">Entrada</a></p>
+<pre><code>716
+3600
+16
+853
+23
+3300
+3200
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/03/dados/arq04.out">Saída</a></p>
+<pre><code>Maior desconto: Cupom 2
+Valor do desconto: R$ 512,00
+</code></pre>
+<div class="markdown-heading"><h2 class="heading-element">Código Base</h2><a id="user-content-código-base" class="anchor" aria-label="Permalink: Código Base" href="#código-base"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>No arquivo auxiliar lab03.py você irá encontrar um código base para dar início ao processo de elaboração dessa tarefa.</p>
+<div class="markdown-heading"><h2 class="heading-element">Orientações</h2><a id="user-content-orientações" class="anchor" aria-label="Permalink: Orientações" href="#orientações"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/03">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab03.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux03.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões.</li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 1.</li>
+<li>O prazo final para submissão é dia 14/04/2024 (domingo).</li>
+</ul>
+
+    </article>
+
+
+<protonpass-root-db80 data-protonpass-role="root"></protonpass-root-db80></body></html>
