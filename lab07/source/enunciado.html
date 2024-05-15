@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 07</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<div class="markdown-heading"><h1 class="heading-element">Montanha Russa</h1><a id="user-content-montanha-russa" class="anchor-element" aria-label="Permalink: Montanha Russa" href="#montanha-russa"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>Após anos de pesquisa, seu velho amigo, o Dr. Brown, finalmente 
+inventou a tão esperada máquina do tempo. Como você possui uma amizade 
+de longa data com o Dr. Brown, ele te convidou para realizar os 
+primeiros testes na máquina.</p>
+<p>Com a oportunidade de viajar no tempo, você pensou em voltar para o 
+passado e investir em eventos cujos resultados já conhecia. 
+Inicialmente, considerou levar um almanaque esportivo, mas percebeu que 
+lucrar com apostas demandaria certo tempo. Decidiu então levar 
+informações sobre ações de uma empresa de tecnologia. Você percebeu que 
+os valores das ações, no decorrer dos dias, formam um gráfico parecido 
+com uma pista de uma montanha russa, como na figura abaixo.</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://susy.ic.unicamp.br:9999/mc102/07/montanha_russa.png"><img src="enunciado_arquivos/montanha_russa.png" alt="" style="max-width: 100%;"></a></p>
+<p>Por isso, a melhor estratégia não é simplesmente comprar todas as 
+ações possíveis em um dia e vendê-las todas posteriormente. Você 
+percebeu que o melhor a fazer é comprar e vender ações múltiplas vezes 
+dependendo do comportamento dos valores da ação no decorrer dos dias. No
+ entanto, para não levantar suspeitas, você decidiu que comprará ações 
+apenas em dois dias distintos.</p>
+<p>A sua estratégia consiste em comprar ações em um dia <code>D1</code>, gastando todo o seu dinheiro, vender todas essas ações em um dia posterior <code>D2</code>, com <code>D2 &gt; D1</code>. Em seguida, gastar todo o dinheiro novamente comprando ações em um dia <code>D3</code>, com <code>D3 &gt; D2</code> e vendê-las em um outro dia <code>D4</code>, com <code>D4 &gt; D3</code>,
+ de modo a obter o maior lucro possível. As ações são vendidas por 
+inteiro, ou seja, não é possível comprar partes de uma ação. Você deve 
+sempre comprar a maior quantidade possível de ações. Note que eventuais 
+sobras de recursos da primeira compra podem ser usadas na segunda 
+compra, junto com valor obtido com a primeira venda.</p>
+<p>Sendo assim, o seu objetivo é encontrar esses quatro dias (<code>D1</code>, <code>D2</code>, <code>D3</code> e <code>D4</code>),
+ que maximizem o lucro obtido com as transações de compra e venda das 
+ações. Em caso de empate, deverá ser escolhido o menor valor possível 
+para cada um desses 4 dias.</p>
+<p>Considere os valores das ações do gráfico da imagem anterior e que você levou <code>R$ 1000,00</code> na viagem. No exemplo da imagem acima, a estratégia ótima é a seguinte: comprar <code>100</code> ações no dia <code>3</code> por <code>R$ 10,00</code> cada; vender todas as ações no dia <code>14</code> por <code>R$ 50,00</code> cada; comprar <code>250</code> ações no dia <code>16</code> por <code>R$ 20,00</code> cada; vender todas as ações no dia <code>19</code> por <code>R$ 60,00</code> cada. Totalizando um valor final de <code>R$ 15000,00</code>.</p>
+<p>Como você possui habilidades em programação, optou por desenvolver um
+ programa para auxiliar na compra e venda das ações da empresa. O 
+programa deve receber um valor N, indicando o número de dias em que você
+ tem registros do preço das ações, sendo que N sempre será menor ou 
+igual a 30. Nas próximas N linhas, serão lidos os preços diários das 
+ações. Por fim, o programa deverá ler um valor Q, indicando a quantidade
+ de dinheiro que você levará na viagem.</p>
+<p>A saída do programa deverá conter o dia e o valor de compra de cada 
+ação, o dia e o valor de venda de cada ação, e o valor total obtido.</p>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<div class="markdown-heading"><h3 class="heading-element">Teste 04</h3><a id="user-content-teste-04" class="anchor-element" aria-label="Permalink: Teste 04" href="#teste-04"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq04.in">Entrada</a></p>
+<pre><code>20
+15.06
+34.83
+38.97
+20.58
+19.97
+29.70
+33.71
+39.49
+29.96
+22.94
+22.99
+28.82
+24.23
+39.75
+21.07
+39.44
+29.53
+31.84
+24.59
+39.41
+50000.00
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq04.out">Saída</a></p>
+<pre><code>Dia da primeira compra: 1
+Valor de compra: R$ 15,06
+Dia da primeira venda: 3
+Valor de venda: R$ 38,97
+Dia da segunda compra: 5
+Valor de compra: R$ 19,97
+Dia da segunda venda: 14
+Valor de venda: R$ 39,75
+Valor final: R$ 257516,04
+</code></pre>
+<div class="markdown-heading"><h3 class="heading-element">Teste 06</h3><a id="user-content-teste-06" class="anchor-element" aria-label="Permalink: Teste 06" href="#teste-06"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq06.in">Entrada</a></p>
+<pre><code>20
+24.00
+17.41
+28.91
+28.25
+28.24
+10.96
+29.76
+6.89
+15.91
+21.87
+28.20
+21.43
+15.72
+24.00
+29.87
+5.55
+6.66
+7.77
+8.88
+9.99
+20000.00
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq06.out">Saída</a></p>
+<pre><code>Dia da primeira compra: 6
+Valor de compra: R$ 10,96
+Dia da primeira venda: 7
+Valor de venda: R$ 29,76
+Dia da segunda compra: 8
+Valor de compra: R$ 6,89
+Dia da segunda venda: 15
+Valor de venda: R$ 29,87
+Valor final: R$ 235350,62
+</code></pre>
+<div class="markdown-heading"><h3 class="heading-element">Teste 08</h3><a id="user-content-teste-08" class="anchor-element" aria-label="Permalink: Teste 08" href="#teste-08"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq08.in">Entrada</a></p>
+<pre><code>5
+100
+110
+10.0
+10.5
+10.9
+190
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/07/dados/arq08.out">Saída</a></p>
+<pre><code>Dia da primeira compra: 1
+Valor de compra: R$ 100,00
+Dia da primeira venda: 2
+Valor de venda: R$ 110,00
+Dia da segunda compra: 3
+Valor de compra: R$ 10,00
+Dia da segunda venda: 5
+Valor de venda: R$ 10,90
+Valor final: R$ 218,00
+</code></pre>
+<div class="markdown-heading"><h2 class="heading-element">Código Base</h2><a id="user-content-código-base" class="anchor-element" aria-label="Permalink: Código Base" href="#código-base"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<p>No arquivo auxiliar lab07.py você irá encontrar um código base para dar início ao processo de elaboração desse programa.</p>
+<div class="markdown-heading"><h2 class="heading-element">Orientações</h2><a id="user-content-orientações" class="anchor-element" aria-label="Permalink: Orientações" href="#orientações"><span aria-hidden="true" class="octicon octicon-link"></span></a></div>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/07">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab07.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux07.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões.</li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 2.</li>
+<li>O prazo final para submissão é dia 12/05/2024 (domingo).</li>
+</ul>
+
+    </article>
+
+
+<protonpass-root-112b data-protonpass-role="root"></protonpass-root-112b></body></html>
