@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 04</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h1><a id="user-content-pedra-papel-e-tesoura-20" class="anchor" aria-hidden="true" tabindex="-1" href="#pedra-papel-e-tesoura-20"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pedra, Papel e Tesoura 2.0</h1>
+<p>Pedra, Papel e Tesoura é um jogo muito popular ao redor do mundo, que
+ consiste em selecionar um sinal (pedra, papel ou tesoura) e comparar 
+com o sinal do adversário. Neste jogo, para determinar o vencedor, 
+utiliza-se a seguinte comparação:</p>
+<ul>
+<li>Pedra ganha de Tesoura</li>
+<li>Tesoura ganha de Papel</li>
+<li>Papel ganha de Pedra</li>
+</ul>
+<p>Para tornar o jogo mais interessante, você e seus amigos decidiram 
+criar regras adicionais para a competição, desenvolvendo a versão 2.0 da
+ brincadeira. Na nova versão, cada jogador tem uma quantidade de bônus 
+disponível. Em cada rodada de disputa, ele pode fazer uma jogada simples
+ ou uma jogada especial. Na jogada simples, o jogador utiliza apenas a 
+força padrão (força = 1), enquanto na jogada especial o jogador aplica 
+uma uma força bônus a sua jogada (força = 1 + bônus utilizado), sendo 
+que o bônus utilizado será descontado do bônus total do jogador. Cada 
+rodada do jogo, além dos sinais e das forças aplicadas por cada jogador,
+ possui um fator, que é usado para multiplicar a força do sinal que 
+geralmente perderia a rodada, permitindo que sinais originalmente mais 
+fracos (considerando as regras do jogo original), vençam as batalhas, 
+como explicado a seguir.</p>
+<p>Caso os dois jogadores indiquem sinais diferentes numa rodada, a 
+força do jogador com sinal mais fraco é multiplicado pelo fator da 
+rodada e, caso o valor resultante seja maior que a força do jogador com 
+sinal mais forte, o jogador com sinal mais fraco é declarado vencedor. 
+Caso contrário, o jogador com sinal mais forte é declarado vencedor. No 
+caso onde os dois jogadores indiquem o mesmo sinal, o jogador que 
+utilizar maior força será declarado vencedor. Se os dois jogadores 
+utilizarem o mesmo sinal e a mesma força, será declarado empate.</p>
+<p>Por exemplo, se o primeiro jogador indicar Pedra com força 2 
+(utilizando um de bônus), o segundo jogador indicar Papel com força 3 
+(utilizando dois de bônus), e o fator da rodada for 2, o primeiro 
+jogador vencerá, mesmo que as regras do jogo original indiquem que ele 
+perderia (Pedra perde de Papel), pois a força da jogada dele vezes o 
+fator da rodada (força = 2 x 2 = 4) resulta numa força maior que a força
+ aplicada pelo segundo jogador (força = 3). Com as mesmas condições 
+anteriores, caso o fator da rodada fosse igual a 1, o segundo jogador 
+ganharia, já que, segundo as regras do jogo original, Papel ganha de 
+Pedra, e a força aplicada pelo primeiro jogador vezes o fator (força = 2
+ x 1 = 2) seria menor ou igual a força indicada pelo segundo jogador 
+(força = 3).</p>
+<p>Como você tem conhecimentos em programação, resolveu criar um código 
+para implementar o jogo Pedra, Papel e Tesoura 2.0. Como entrada, seu 
+código deverá ler duas linhas, indicando a quantidade de bônus do 
+primeiro e do segundo jogador, respectivamente. Na sequência, seu 
+programa lerá cada rodada da brincadeira, com as informações de sinal 
+indicado pelo primeiro jogador, da força utilizada pelo primeiro 
+jogador, do sinal indicado pelo segundo jogador, da força utilizada pelo
+ segundo jogador e do fator da rodada, respectivamente. Seu código 
+deverá encerrar após a leitura de uma linha com valor 0. Como saída, 
+você apresentará a quantidade de vitórias do primeiro jogador, de 
+vitórias do segundo jogador e de empates.</p>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<h3><a id="user-content-teste-01" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-01"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq01.in">Entrada</a></p>
+<pre><code>10
+10
+Pedra 1 Papel 2 3
+Tesoura 3 Papel 2 2
+Tesoura 4 Pedra 2 2
+Tesoura 7 Tesoura 7 2
+Papel 1 Papel 1 3
+0
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq01.out">Saída</a></p>
+<pre><code>Vitórias do jogador 1: 2
+Vitórias do jogador 2: 2
+Empates: 1
+</code></pre>
+<ul>
+<li>
+<p>Na primeira rodada, por padrão, o segundo jogador ganharia de acordo 
+com o jogo original (Papel ganha de Pedra). Aplicando as condições de 
+força, o primeiro jogador ficará com 3 e o segundo jogador ficará com 2.
+ Logo, o primeiro jogador consegue superar o segundo jogador, sendo 
+considerado vencedor da rodada. Além disso, o primeiro jogador não 
+gastou forças adicionais, enquanto o segundo jogador gastou 1 bônus de 
+força, ficando com 9 bônus disponíveis.</p>
+</li>
+<li>
+<p>Na segunda rodada, por padrão, o primeiro jogador ganharia de acordo 
+com o jogo original (Tesoura ganha de Papel). Aplicando as condições de 
+força, o segundo jogador ficará com 4 e o primeiro jogador ficará com 3.
+ Logo, o segundo jogador consegue superar o primeiro jogador, sendo 
+considerado vencedor da rodada. Além disso, o primeiro jogador gastou 2 
+de bônus de força, ficando com 8 disponíveis, enquanto o segundo jogador
+ gastou 1  bônus de força, ficando com 8 bônus disponíveis.</p>
+</li>
+<li>
+<p>Na terceira rodada, por padrão, o segundo jogador ganharia de acordo 
+com o jogo original (Pedra ganha de Tesoura). Aplicando as condições de 
+força, o primeiro jogador ficará com 8 e o segundo jogador ficará com 2.
+ Logo, o primeiro jogador consegue superar o segundo jogador, sendo 
+considerado vencedor da rodada. Além disso, o primeiro jogador gastou 3 
+de bônus de força, ficando com 5 disponíveis, enquanto o segundo jogador
+ gastou 1 bônus de força, ficando com 7 bônus disponíveis.</p>
+</li>
+<li>
+<p>Na quarta rodada, por padrão, o resultado seria empate (já que ambos 
+indicaram Tesoura). O primeiro jogador poderá utilizar somente mais 5 
+bônus de força, ficando com força igual a 6, enquanto o segundo jogador 
+pode utilizar todos as 6 unidades de bônus, resultando numa força igual a
+ 7. Portanto, o segundo jogador vence a rodada. Além disso, o primeiro 
+jogador ficou sem bônus de força, enquanto ainda resta 1 bônus de força 
+para o segundo jogador.</p>
+</li>
+<li>
+<p>Na quinta rodada, ambos os jogadores indicaram Papel e fizeram uma 
+jogada simples (sem usar bônus). Portanto, como resultado, temos um 
+empate.</p>
+</li>
+</ul>
+<h3><a id="user-content-teste-02" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-02"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq02.in">Entrada</a></p>
+<pre><code>5
+7
+Papel 2 Tesoura 2 3
+Pedra 1 Tesoura 3 2
+Papel 2 Papel 2 4
+0
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq02.out">Saída</a></p>
+<pre><code>Vitórias do jogador 1: 1
+Vitórias do jogador 2: 1
+Empates: 1
+</code></pre>
+<h3><a id="user-content-teste-03" class="anchor" aria-hidden="true" tabindex="-1" href="#teste-03"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq03.in">Entrada</a></p>
+<pre><code>8
+2
+Pedra 9 Papel 1 5
+Tesoura 3 Pedra 1 2
+Papel 2 Pedra 1 2
+Papel 1 Pedra 1 1
+Tesoura 4 Papel 3 2
+Tesoura 1 Tesoura 3 2
+0
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/04/dados/arq03.out">Saída</a></p>
+<pre><code>Vitórias do jogador 1: 3
+Vitórias do jogador 2: 2
+Empates: 1
+</code></pre>
+<h2><a id="user-content-código-base" class="anchor" aria-hidden="true" tabindex="-1" href="#código-base"><span aria-hidden="true" class="octicon octicon-link"></span></a>Código Base</h2>
+<p>No arquivo auxiliar lab04.py você irá encontrar um código base para 
+dar início ao processo de submissão desse laboratório, inclusive com a 
+leitura e saída de dados.</p>
+<h2><a id="user-content-orientações" class="anchor" aria-hidden="true" tabindex="-1" href="#orientações"><span aria-hidden="true" class="octicon octicon-link"></span></a>Orientações</h2>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/04">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab04.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux04.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões.</li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 2.</li>
+<li>O prazo final para submissão é dia 21/04/2023 (domingo).</li>
+</ul>
+
+    </article>
+
+
+<protonpass-root-6086 data-protonpass-role="root"></protonpass-root-6086></body></html>
