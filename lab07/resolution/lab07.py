@@ -20,20 +20,20 @@ melhores_dias = (0, 0, 0, 0)
 
 for D1 in range(dias):
     for D2 in range(D1 + 1, dias):
-        primeira_compra = precos[D1]
-        primeira_venda = precos[D2]
-        quantidade_acoes_primeira_compra = dinheiro_inicial // primeira_compra
-        dinheiro_restante_primeira_compra = dinheiro_inicial % primeira_compra
-        primeiro_lucro = quantidade_acoes_primeira_compra * (primeira_venda - primeira_compra)
-        dinheiro_total_primeira_venda = quantidade_acoes_primeira_compra * primeira_venda + dinheiro_restante_primeira_compra
+        preco_acao_primeira_compra = precos[D1]
+        preco_acao_primeira_venda = precos[D2]
+        quantidade_acoes_primeira_compra = dinheiro_inicial // preco_acao_primeira_compra
+        dinheiro_restante_primeira_compra = dinheiro_inicial % preco_acao_primeira_compra
+        primeiro_lucro = quantidade_acoes_primeira_compra * (preco_acao_primeira_venda - preco_acao_primeira_compra)
+        dinheiro_total_primeira_venda = quantidade_acoes_primeira_compra * preco_acao_primeira_venda + dinheiro_restante_primeira_compra
 
         for D3 in range(D2 + 1, dias):
             for D4 in range(D3 + 1, dias):
-                segunda_compra = precos[D3]
-                segunda_venda = precos[D4]
-                quantidade_acoes_segunda_compra = dinheiro_total_primeira_venda // segunda_compra
-                dinheiro_restante_segunda_compra = dinheiro_total_primeira_venda % segunda_compra
-                segundo_lucro = quantidade_acoes_segunda_compra * (segunda_venda - segunda_compra)
+                preco_acao_segunda_compra = precos[D3]
+                preco_acao_segunda_venda = precos[D4]
+                quantidade_acoes_segunda_compra = dinheiro_total_primeira_venda // preco_acao_segunda_compra
+                dinheiro_restante_segunda_compra = dinheiro_total_primeira_venda % preco_acao_segunda_compra
+                segundo_lucro = quantidade_acoes_segunda_compra * (preco_acao_segunda_venda - preco_acao_segunda_compra)
                 dinheiro_total_segunda_venda = primeiro_lucro + segundo_lucro
 
                 if dinheiro_total_segunda_venda > lucro_maximo or D4 == 3:
