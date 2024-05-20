@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Laboratório 08</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="enunciado_arquivos/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="enunciado_arquivos/github-markdown-light.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h1>Calculadora Genômica</h1>
+<p>A sua amiga Filo e você adoram as ciências biológicas e se inscreveram na disciplina de genômica comparativa este semestre.
+Entretanto, devido a uma forte chuva ontem à noite, o ônibus não passou e você perdeu a primeira aula.</p>
+<p>Ao vê-la hoje, Filo pareceu preocupada: ela disse que o professor explicou os conceitos fundamentais
+e logo encarregou os alunos de, em grupos de dois, implementar suas próprias calculadoras
+genômicas, capazes de realizar operações comuns como inversão e busca de trechos de interesse.
+O professor também irá trazer algumas cadeias genômicas reais na próxima aula e cada grupo
+deverá usar a sua própria calculadora.</p>
+<p>Como um(a) excelente programador(a), você sugeriu que começassem o trabalho prontamente!
+Filo concordou e te entregou as anotações que tinha feito na primeira aula.</p>
+<h2>Introdução à Genômica Comparativa (Notas da Aula I, 30/02/2024)</h2>
+<h3>Árvore filogenéticas</h3>
+<p>A biologia evolutiva e a genômica comparativa são campos de pesquisa fundamentais para a biologia contemporânea.
+Neles, ferramentas como árvores filogenéticas, diagramas que representam as relações evolutivas entre diferentes organismos,
+são empregadas para elucidar a origem e evolução de características
+específicas em entidades biológicas, a presença ou ausência de genes de interesse,
+ou a aquisição de funções biológicas específicas.
+Além disso, as árvores filogenéticas são cruciais na análise de complexos relacionamentos filogenéticos
+entre diferentes grupos de organismos, contribuindo para a reconstrução de suas histórias evolutivas.</p>
+<!-- ![Árvore filogenética](arvore-rfdXx9t.png) -->
+<figure>
+  <img src="enunciado_arquivos/arvore-rfdXx9t.png" alt="Árvore filogenética">
+  
+    <small>
+      Fonte: At last, butterflies get a bigger, better evolutionary tree (<a href="https://www.floridamuseum.ufl.edu/science/at-last-butterflies-get-a-bigger-better-evolutionary-tree/">floridamuseum.ufl.edu/science/at-last-butterflies-get-a-bigger-better-evolutionary-tree/</a>).
+    </small>
+  
+</figure>
+
+<h3>Sequências genômicas</h3>
+<p>As árvores filogenéticas são baseadas em comparações de 
+características morfológicas, comportamentais, fisiológicas e, cada vez 
+mais comum, em informações genéticas: sequências de DNA ou proteínas de 
+diferentes espécies. Essas sequências podem ser comparadas e alinhadas 
+para identificar regiões conservadas e divergentes, usadas para inferir a
+ relação evolutiva entre as espécies.</p>
+<!-- ![Figura ilustrativa do Genoma.](genome.png) -->
+<p><img src="enunciado_arquivos/genome.png" width="400" alt="Figura ilustrativa do Genoma." style="width:400px;"></p>
+<p>As cadeias de DNA são usualmente representadas por uma sequência (com repetição) dos caracteres <strong>C</strong>, <strong>G</strong>, <strong>T</strong> e <strong>A</strong>. Por exemplo:</p>
+<pre><code class="language-bash">GCGAATTTCCCATACGTCCCTACGGGACGGAC
+</code></pre>
+<p>No contexto deste trabalho, as cadeias de DNA podem ser <strong>lineares</strong> ou <strong>cíclicas</strong> (representadas pelos sufixos <code>c0</code> e <code>c1</code>, respectivamente). No caso de cadeias cíclicas, o <strong>último elemento</strong> da cadeia possui adjacência com o <strong>penúltimo</strong> e com o <strong>primeiro elemento</strong>. Quando nenhum descritor for informado, supõe-se que se trata de uma cadeia linear.
+Por exemplo:</p>
+<pre><code class="language-bash">GGACGGA     # cadeia linear
+GCGAATT c0  # cadeia linear
+GGGCCTG c1  # cadeia cíclica
+</code></pre>
+<h3>Operações sobre genomas</h3>
+<p>Uma das técnicas utilizadas para comparar sequências de DNA é através
+ da aplicação de diferentes operações para transformar uma sequência em 
+outra. Essas operações são usualmente inspiradas em mutações que podem 
+ocorrer durante o processo evolutivo.</p>
+<h2>Especificação do Trabalho</h2>
+<p>Neste trabalho, você deverá implementar uma calculadora genômica.
+Logo no início, será informado o genoma de referência, representado por uma <em>string</em> contendo os caracteres <strong>C</strong>, <strong>G</strong>, <strong>T</strong> e <strong>A</strong>. Em seguida, será fornecida uma sequência de operações a serem realizadas sobre a cadeia de referência.</p>
+<p>Seu programa deve possibilitar a execução das seguintes operações:</p>
+<ul>
+<li><strong>reverter:</strong> dados os índices <em>i</em> e <em>j</em>, reverter a subsequência [<em>i</em>, <em>j</em>] (de <em>i</em> até <em>j</em>, inclusive ambos) do genoma atual.<br>
+  Ex. 1: Seja <em>i</em> o índice do primeiro <em>C</em> e <em>j=i+3</em>, o genoma '…<strong>CGTA</strong>GT…' será revertido para '…<strong>ATGC</strong>GT…'<br>
+  Ex. 2: Seja <em>i=4</em> e <em>j=7</em>, o genoma '<strong>AG</strong>AC<strong>GT</strong> c1' será revertido para '<strong>TG</strong>AC<strong>GA</strong> c1'<br>
+  Ex. 3: Seja <em>i=5</em> e <em>j=2</em>, o genoma '<strong>CTA</strong>CG<strong>TG</strong> c1' será revertido para '<strong>CGT</strong>CG<strong>AT</strong> c1'</li>
+<li><strong>transpor:</strong> transpor o genoma linear considerando os índices <em>i</em>, <em>j</em>, <em>k</em>, isto é,
+  trocar a posição da subsequência iniciada em <em>i</em> e terminada em <em>j</em> com a subsequência iniciada em <em>j+1</em> e terminada em <em>k</em>.<br>
+  Ex. 1: Seja <em>i=2</em>, <em>j=5</em>, <em>k=9</em>, então o genoma 'CT<strong>CGTA<em>AGCT</em></strong>GA' será transposto para 'CT<strong><em>AGCT</em>CGTA</strong>GA'</li>
+<li><strong>inserir:</strong> combinar o genoma atual com um novo genoma (linear) informado, inserindo esse na <em>i</em>-ésima posição do atual.<br>
+  Ex. 1: seja 'ATGCGT' o genoma atual, 'CTAG' o genoma informado e <em>i=3</em>, o genoma atual será atualizado para 'ATG<strong>CTAG</strong>CGT'<br>
+  Ex. 2: seja 'CGTATT c1' o genoma atual, 'AA' o genoma informado e <em>i=6</em>, o genoma atual será atualizado para 'CGTATT<strong>AA</strong>'  </li>
+<li><strong>remover:</strong> remover a subsequência [<em>i</em>, <em>j</em>] do genoma atual considerando dois índices <em>i</em> e <em>j</em> informados.<br>
+  Ex. 1: seja o genoma 'GC<strong>GTA</strong>T', <em>i=2</em> e <em>j=4</em>, então o genoma resultante será 'GCT'<br>
+  Ex. 2: seja o genoma 'AG<strong>TG</strong> c1', <em>i=2</em> e <em>j=5</em>, então o genoma resultante será 'AG'  </li>
+<li><strong>fissão:</strong> transforma o genoma atual (cíclico) em genoma linear, por meio do rompimento da adjacência entre o <em>i</em>-ésimo elemento e seu sucessor.
+  A cadeia gerada deve ser representada tendo o <em>i</em>-ésimo elemento (na cadeia original) como primeiro elemento.<br>
+  Ex. 1: seja 'AT<strong>G</strong>CGT c1' o genoma atual e <em>i=2</em>, o genoma será atualizado para '<strong>G</strong>CGTAT c0'</li>
+<li><strong>fusão:</strong> transforma o genoma atual (linear) em um genoma cíclico, por meio da junção entre o primeiro e último elementos da cadeia.<br>
+  Ex. 1: seja 'CGTACTCACGT c0' o genoma atual, será atualizado para 'CGTACTCACGT c1'</li>
+<li><strong>mostrar:</strong> exibir o genoma atual para o usuário. O descritor <code>c0</code> ou <code>c1</code> também deve ser exibido.</li>
+<li><strong>buscar:</strong> dado um genoma de busca, exibir na tela o 
+número de vezes em que ele ocorre no genoma atual. O genoma atual não 
+deve sofrer alterações.<br>
+  Ex. 1: buscar 'TCGA' em 'C<strong>TCGA</strong>C<strong>TCGA</strong>GA' deve retornar duas ocorrências (exibir "2")<br>
+  Ex. 2: buscar 'CCC' em 'A<strong>CCC</strong>CT' deve retornar uma 
+única ocorrência (exibir "1", não considerar ocorrências com 
+sobreposição com uma ocorrência previamente identificada)<br>
+  Ex. 3: buscar 'AGT' em '<strong>GT</strong>CG<strong>AGT</strong>C<strong>AGTA</strong> c1' deve retornar três ocorrências (exibir "3").</li>
+</ul>
+<p>Seu programa deve finalizar ao receber o comando "sair".</p>
+<p>A entrada do seu programa consiste em uma <em>string</em>, 
+representando o genoma de referência, e uma sequência de comandos a 
+serem executados sobre o genoma. Esses comandos são separados por 
+quebras de linha (o caractere <code>\n</code>), onde cada comando descreve uma operação a ser executada e seus parâmetros.</p>
+<p>A tabela abaixo descreve os comandos que serão fornecidos ao 
+programa, seus parâmetros e um exemplo de como eles seriam apresentados.
+ Na segunda coluna, após o nome do parâmetro, indicamos o tipo dele 
+(apenas para deixar claro), separando o nome e o tipo por ':'.</p>
+<table>
+<thead>
+<tr>
+<th>Operação</th>
+<th>Parâmetros</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reverter</td>
+<td>i:int j:int</td>
+<td>reverter 2 5</td>
+</tr>
+<tr>
+<td>transpor</td>
+<td>i:int j:int k:int</td>
+<td>transpor 0 2 4</td>
+</tr>
+<tr>
+<td>inserir</td>
+<td>g:str i:int</td>
+<td>inserir CTAG 3</td>
+</tr>
+<tr>
+<td>remover</td>
+<td>i:int j:int</td>
+<td>remover 2 4</td>
+</tr>
+<tr>
+<td>fissao</td>
+<td>i:int</td>
+<td>fissao 4</td>
+</tr>
+<tr>
+<td>fusao</td>
+<td></td>
+<td>fusao</td>
+</tr>
+<tr>
+<td>mostrar</td>
+<td></td>
+<td>mostrar</td>
+</tr>
+<tr>
+<td>buscar</td>
+<td>g:str</td>
+<td>buscar TG</td>
+</tr>
+</tbody>
+</table>
+<p>Além disso, algumas regras são importantes:</p>
+<ol>
+<li>Os índices <em>i</em>, <em>j</em> e <em>k</em> serão sempre inteiros não negativos;</li>
+<li>Para genomas lineares:<ol>
+<li>Se um dos índices <em>i</em>, <em>j</em> ou <em>k</em> for <strong>igual ou maior</strong> que o tamanho da sequência <code>S</code>, o maior índice válido deverá ser considerado. Isto é, <code>min(i, tamanho(S))</code> para a <strong>inserção</strong> e <code>min(i, tamanho(S)-1)</code> para as demais operações;</li>
+<li>Nenhuma alteração deve ser feita no genoma atual se o início (índice <em>i</em>) da <strong>reversão</strong>, <strong>transposição</strong> ou <strong>remoção</strong> for igual ou maior do que o tamanho do genoma (corolário da regra 2);</li>
+<li>Nenhuma alteração deve ser feita no genoma atual se o meio da transposição (índice <em>j</em>) for igual ou maior do que o tamanho total do genoma (corolário da regra 2);</li>
+</ol>
+</li>
+<li>Para genomas cíclicos:<ol>
+<li>Para as operações de <strong>inserção</strong> e <strong>remoção</strong>, se um dos índices <em>i</em> ou <em>j</em> for <strong>igual ou maior</strong> que o tamanho da sequência <code>S</code>, a maior posição válida deverá ser considerada. Isto é, <code>min(j, tamanho(S))</code> para a <strong>inserção</strong> e <code>min(j, tamanho(S)-1)</code> para a remoção;</li>
+<li>Para todas as demais operações, se um dos índices <em>i</em>, <em>j</em> ou <em>k</em> for <strong>igual ou maior</strong> ao tamanho da sequência <code>S</code>, a posição cíclica (<code>i mod tamanho(S)</code>) deverá ser considerada;</li>
+</ol>
+</li>
+</ol>
+<p>Seu programa deve produzir saídas nas (e somente nas) execuções das operações <strong>buscar</strong> e <strong>mostrar</strong>.
+Na primeira, um número inteiro deve ser impresso na tela, indicando o número de ocorrências encontradas.
+Por outro lado, o genoma atual completo deve ser exibido ao receber o comando <strong>mostrar</strong>.</p>
+<p>Exemplos de entradas e saídas esperadas pelo seu programa:</p>
+<h3>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq01.in">Entrada</a></p>
+<pre><code>ATCGTAGTG
+reverter 2 5
+mostrar
+buscar TG
+sair
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq01.out">Saída</a></p>
+<pre><code>ATATGCGTG c0
+2
+</code></pre>
+<h3>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq02.in">Entrada</a></p>
+<pre><code>CTCGTAAGCTGA
+mostrar
+buscar TAGA
+transpor 2 5 9
+mostrar
+buscar TAGA
+sair
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq02.out">Saída</a></p>
+<pre><code>CTCGTAAGCTGA c0
+0
+CTAGCTCGTAGA c0
+1
+</code></pre>
+<h3>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq03.in">Entrada</a></p>
+<pre><code>TAGTCGTGTAGTGCTGTAGATGTGCTGTGTAGACGTCGTCGTGTCTCG
+mostrar
+inserir CTAG 3
+mostrar
+buscar TCGT
+buscar TAG
+inserir TCGTCGTC 1
+mostrar
+buscar TAG
+buscar TGCTG
+inserir TGC 60
+mostrar
+buscar TGCTG
+sair
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102/08/dados/arq03.out">Saída</a></p>
+<pre><code>TAGTCGTGTAGTGCTGTAGATGTGCTGTGTAGACGTCGTCGTGTCTCG c0
+TAGCTAGTCGTGTAGTGCTGTAGATGTGCTGTGTAGACGTCGTCGTGTCTCG c0
+2
+5
+TTCGTCGTCAGCTAGTCGTGTAGTGCTGTAGATGTGCTGTGTAGACGTCGTCGTGTCTCG c0
+4
+2
+TTCGTCGTCAGCTAGTCGTGTAGTGCTGTAGATGTGCTGTGTAGACGTCGTCGTGTCTCGTGC c0
+2
+</code></pre>
+<h2>Código Base</h2>
+<p>No arquivo auxiliar lab08.py você irá encontrar um código base para dar início ao processo de elaboração deste laboratório.</p>
+<h2>Orientações</h2>
+<ul>
+<li>Veja <a href="https://susy.ic.unicamp.br:9999/mc102/08">aqui</a> a página de submissão da tarefa.</li>
+<li>O arquivo a ser submetido deve se chamar lab08.py.</li>
+<li>No link "Arquivos auxiliares" há um arquivo compactado (aux08.zip) 
+que contém todos os arquivos de testes abertos (entradas e saídas 
+esperadas).</li>
+<li>O laboratório é composto de 10 testes abertos e 10 testes fechados.</li>
+<li>O limite máximo será de 20 submissões.</li>
+<li>Acesse o sistema SuSy com seu RA (apenas números) e a senha que você utiliza para fazer acesso ao sistema da DAC.</li>
+<li>Você deve seguir as instruções de submissão descritas no enunciado.</li>
+<li>Serão considerados apenas os resultados da última submissão.</li>
+<li>Esta tarefa tem peso 3.</li>
+<li>O prazo final para submissão é dia 19/05/2024 (domingo).</li>
+</ul>
+    </article>
+
+
+<protonpass-root-4e17 data-protonpass-role="root"></protonpass-root-4e17></body></html>
